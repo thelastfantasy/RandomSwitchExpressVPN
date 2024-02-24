@@ -5,7 +5,7 @@
 # 该脚本用于创建一个 Windows 计划任务，用于在用户登录时每隔1小时执行 RandomSwitchExpressVpn.ps1 脚本，并在运行1分钟后停止
 # 任务将被创建在 "ExpressVPN" 文件夹内
 
-$RunHidden = $true
+$RunHidden = $true # 你可以设置为 $false 以显示任务窗口
 $ScriptName = "RandomSwitchExpressVpn.ps1"
 $TaskName = "重连ExpressVPN"
 $TaskFolderName = "ExpressVPN"
