@@ -21,6 +21,7 @@ $selectedLocation = Get-Random -InputObject $vpnLocations
 # 使用选中的位置名称执行 ExpressVPN 连接命令
 .\ExpressVPN.CLI disconnect
 .\ExpressVPN.CLI connect $selectedLocation
+Clear-DnsClientCache
 
 # 打印所选的 VPN 位置名称，以确认已选择的位置
 Write-Output "Connecting to: $selectedLocation"
