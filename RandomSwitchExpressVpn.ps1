@@ -1,5 +1,6 @@
 # Author: Lyoat
 # Email: i@lyoat.com
+# Encoding: UTF-8 with BOM
 
 # 该脚本用于在 Windows 上随机切换 ExpressVPN 的 VPN 位置
 # 该脚本需要在 PowerShell 中运行，且需要以管理员权限运行
