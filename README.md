@@ -9,3 +9,9 @@
 ## 运行要求：
 - ExpressVPN已登录
 - Powershell**管理员权限**执行`.\CreateScheduledTask.ps1`添加计划任务即可
+
+## 注意事项：
+- 本脚本仅供学习交流使用，严禁用于商业用途
+- 请确保Powershell为最新版本，获取方法
+  - [Windows PowerShell](https://docs.microsoft.com/zh-cn/powershell/scripting/install/installing-windows-powershell?view=powershell-7.1)
+  - Windows应用商店搜索Powershell，点击安装
