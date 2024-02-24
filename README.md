@@ -13,5 +13,5 @@
 ## 注意事项：
 - 本脚本仅供学习交流使用，严禁用于商业用途
 - 请确保Powershell为最新版本，获取方法
-  - [Windows PowerShell](https://docs.microsoft.com/zh-cn/powershell/scripting/install/installing-windows-powershell?view=powershell-7.1)
+  - [Windows PowerShell](https://aka.ms/powershell-release?tag=stable)
   - Windows应用商店搜索Powershell，点击安装
