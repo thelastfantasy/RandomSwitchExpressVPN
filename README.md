@@ -15,3 +15,4 @@
 - 请确保Powershell为最新版本，获取方法
   - [Windows PowerShell](https://aka.ms/powershell-release?tag=stable)
   - Windows应用商店搜索Powershell，点击安装
+  - 启动Powershell方法：Win+X，选择Windows Powershell（管理员），或者在搜索框输入Powershell，右键选择以管理员身份运行
