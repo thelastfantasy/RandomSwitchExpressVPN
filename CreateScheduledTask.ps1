@@ -8,7 +8,7 @@
 
 # 你可以修改以下变量以适应你的需求
 $RunHidden = $true # 可设置为 $false 以显示执行时的命令行窗口
-$ReconnectInverval = 60 # 重连间隔时间（分钟）
+$ReconnectInverval = 180 # 重连间隔时间（分钟）
 
 # 以下变量不建议修改
 $ScriptName = "RandomSwitchExpressVpn.ps1"

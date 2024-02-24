@@ -21,7 +21,6 @@ $selectedLocation = Get-Random -InputObject $vpnLocations
 # 使用选中的位置名称执行 ExpressVPN 连接命令
 .\ExpressVPN.CLI disconnect
 .\ExpressVPN.CLI connect $selectedLocation
-Clear-DnsClientCache
 
 # 打印所选的 VPN 位置名称，以确认已选择的位置
 Write-Output "Connecting to: $selectedLocation"
@@ -31,3 +30,9 @@ Get-Date
 
 # 查看VPN连接状态，以确认 VPN 是否已连接
 .\ExpressVPN.CLI status
+
+# 睡眠5秒，然后让GoodSync暂停然后重连
+Start-Sleep -Seconds 15
+Clear-DnsClientCache
+# Set-Location "C:\Program Files\Siber Systems\GoodSync"
+# .\gs-runner.exe -pause
