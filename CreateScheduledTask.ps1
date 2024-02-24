@@ -12,7 +12,7 @@ $ScriptPath = Join-Path -Path (Get-Location) -ChildPath $ScriptName
 
 # 创建触发器：用户登录时触发
 $TriggerAtLogon = New-ScheduledTaskTrigger -AtLogon
-$TriggerHourly = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(1) -RepetitionInterval (New-TimeSpan -Hours 1) -RepetitionDuration (New-TimeSpan -Days 99)
+$TriggerHourly = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(1) -RepetitionInterval (New-TimeSpan -Minutes 60) -RepetitionDuration (New-TimeSpan -Days 99)
 
 # 创建操作：执行 PowerShell 脚本
 $Action = New-ScheduledTaskAction -Execute "pwsh.exe" -Argument "-File `"$ScriptPath`""
