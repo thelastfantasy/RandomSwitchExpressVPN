@@ -6,11 +6,13 @@
 # 默认切换的 VPN 位置为：新加坡、台湾、香港、日本、韩国、澳门
 # 执行脚本前请确保已安装 ExpressVPN Windows程序 并登录账号
 
+$areas = @("Singapore", "Taiwan", "Hong Kong", "Japan", "Korea", "Macau")
+
 # 进入 ExpressVPN 安装目录
 Set-Location "C:\Program Files (x86)\ExpressVPN\services"
 
 # 收集 VPN 位置名称到数组
-$vpnLocations = .\expressvpn.cli list | Where-Object { $_ -match "Singapore|Taiwan|Hong Kong|Japan|Korea|Macau" } | ForEach-Object { $_ -replace " \d+$", "" } | ForEach-Object { $_.Trim() }
+$vpnLocations = .\expressvpn.cli list | Where-Object { $_ -match ($areas -join "|") } | ForEach-Object { $_ -replace " \d+$", "" } | ForEach-Object { $_.Trim() }
 
 # 从数组中随机选择一个 VPN 位置
 $selectedLocation = Get-Random -InputObject $vpnLocations
