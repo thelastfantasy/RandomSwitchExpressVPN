@@ -5,7 +5,11 @@
 # 该脚本用于创建一个 Windows 计划任务，用于在用户登录时每隔1小时执行 RandomSwitchExpressVpn.ps1 脚本，并在运行1分钟后停止
 # 任务将被创建在 "ExpressVPN" 文件夹内
 
+# 你可以修改以下变量以适应你的需求
 $RunHidden = $true # 你可以设置为 $false 以显示任务窗口
+$ReconnectInverval = 60 # 重连间隔时间（分钟），可按喜好修改
+
+# 以下变量不建议修改
 $ScriptName = "RandomSwitchExpressVpn.ps1"
 $TaskName = "重连ExpressVPN"
 $TaskFolderName = "ExpressVPN"
@@ -13,7 +17,7 @@ $ScriptPath = Join-Path -Path (Get-Location) -ChildPath $ScriptName
 
 # 创建触发器：用户登录时触发
 $TriggerAtLogon = New-ScheduledTaskTrigger -AtLogon
-$TriggerHourly = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(1) -RepetitionInterval (New-TimeSpan -Minutes 60) -RepetitionDuration (New-TimeSpan -Days 99)
+$TriggerHourly = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(1) -RepetitionInterval (New-TimeSpan -Minutes $ReconnectInverval) -RepetitionDuration (New-TimeSpan -Days 99)
 
 # 创建操作：执行 PowerShell 脚本
 $Action = New-ScheduledTaskAction -Execute "pwsh.exe" -Argument "-File `"$ScriptPath`""
