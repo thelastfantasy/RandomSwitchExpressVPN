@@ -5,6 +5,7 @@
 # 该脚本用于创建一个 Windows 计划任务，用于在用户登录时每隔1小时执行 RandomSwitchExpressVpn.ps1 脚本，并在运行1分钟后停止
 # 任务将被创建在 "ExpressVPN" 文件夹内
 
+$RunHidden = $true
 $ScriptName = "RandomSwitchExpressVpn.ps1"
 $TaskName = "重连ExpressVPN"
 $TaskFolderName = "ExpressVPN"
@@ -21,7 +22,12 @@ $Action = New-ScheduledTaskAction -Execute "pwsh.exe" -Argument "-File `"$Script
 $Principal = New-ScheduledTaskPrincipal -UserId "$env:USERDOMAIN\$env:USERNAME" -LogonType Interactive -RunLevel Highest
 
 # 设置任务选项
-$Settings = New-ScheduledTaskSettingsSet -ExecutionTimeLimit (New-TimeSpan -Minutes 1) -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
+if ($RunHidden) {
+    $Settings = New-ScheduledTaskSettingsSet -ExecutionTimeLimit (New-TimeSpan -Minutes 1) -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -Hidden
+}
+else {
+    $Settings = New-ScheduledTaskSettingsSet -ExecutionTimeLimit (New-TimeSpan -Minutes 1) -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
+}
 
 # 检查并获取或创建任务文件夹
 $TaskService = New-Object -ComObject Schedule.Service
