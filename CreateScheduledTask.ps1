@@ -21,7 +21,12 @@ $TriggerAtLogon = New-ScheduledTaskTrigger -AtLogon
 $TriggerHourly = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(1) -RepetitionInterval (New-TimeSpan -Minutes $ReconnectInverval) -RepetitionDuration (New-TimeSpan -Days 99)
 
 # 创建操作：执行 PowerShell 脚本
-$Action = New-ScheduledTaskAction -Execute "pwsh.exe" -Argument "-File `"$ScriptPath`""
+if ($RunHidden) {
+    $Action = New-ScheduledTaskAction -Execute "pwsh.exe" -Argument "-WindowStyle Hidden -File `"$ScriptPath`""
+}
+else {
+    $Action = New-ScheduledTaskAction -Execute "pwsh.exe" -Argument "-File `"$ScriptPath`""
+}
 
 # 设置任务主体，使用最高权限运行
 $Principal = New-ScheduledTaskPrincipal -UserId "$env:USERDOMAIN\$env:USERNAME" -LogonType Interactive -RunLevel Highest
